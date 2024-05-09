@@ -1,7 +1,7 @@
 # firefox_dump
 When trying to gather additional credentials from lets say an Administrator Jump Host, extracting sensitive Mozilla Firefox files is a great approach. Doing this manually is boring and time consuming, especially if there are hundreds of users under `C:\Users`. 
 
-To simplify this I've made a simple PowerShell script, `firefox_dump.ps1`, that gathers all sensitive Mozilla Firefox information which can later be decrypted using [`firefox_decrypt.py`](https://github.com/unode/firefox_decrypt) or similar.
+To simplify this I've made a simple PowerShell script, [`firefox_dump.ps1`](https://raw.githubusercontent.com/0xPThree/firefox_dump/main/firefox_dump.ps1), that gathers all sensitive Mozilla Firefox information which can later be decrypted using [`firefox_decrypt.py`](https://github.com/unode/firefox_decrypt) or similar.
 
 The script should be ran as a high privileged user to gain as much information as possible.
 
