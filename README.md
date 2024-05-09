@@ -7,7 +7,7 @@ The script should be ran as a high privileged user to gain as much information a
 
 ## Example Usage
 ```powershell
-PS C:\tmp> powershell.exe -executionpolicy bypass .\firefox_extract.ps1
+PS C:\tmp> powershell.exe -ExecutionPolicy Bypass .\firefox_extract.ps1
  ___    __   ___  ___  __       __              __
 |__  | |__) |__  |__  /  \ \_/ |  \ |  |  |\/| |__)
 |    | |  \ |___ |    \__/ / \ |__/ \__/  |  | |
