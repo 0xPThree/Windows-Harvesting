@@ -3,7 +3,7 @@ When trying to gather additional credentials from lets say an Administrator Jump
 
 To simplify this I've made a simple PowerShell script, [`firefox_dump.ps1`](https://raw.githubusercontent.com/0xPThree/firefox_dump/main/firefox_dump.ps1), that gathers all sensitive Mozilla Firefox information which can later be decrypted using [`firefox_decrypt.py`](https://github.com/unode/firefox_decrypt) or similar.
 
-The script should be ran as a high privileged user to gain as much information as possible.
+The script should be run as a **high privileged user** to gain as much information as possible.
 
 ## Example Usage
 ```powershell
