@@ -22,7 +22,7 @@ $banner = @"
 |\ | /  \  |  |__  |__)  /\  |  \     |  \ |  |  |\/| |__) 
 | \| \__/  |  |___ |    /~~\ |__/ ___ |__/ \__/  |  | |    
                                                            
-CATS: "All your notes are belong to us"
+"All your notes are belong to us"
 "@
 Write-Host $banner
 
@@ -42,14 +42,14 @@ try {
                 $destinationDirectory = Join-Path -Path $destinationRootDirectory -ChildPath $username
                 New-Item -ItemType Directory -Path $destinationDirectory -Force -ErrorAction SilentlyContinue | Out-Null
                 Copy-Item -Path "$backupDirectory\*" -Destination $destinationDirectory -Recurse -Force
-                Write-Host "[+] Extracting Notepad++ data from '$username' to: $destinationDirectory"
+                Write-Host "[+] Extracting Notepad++ data from '$username' to: $destinationDirectory" -ForegroundColor DarkGreen
             } else {
-                Write-Host "[-] '$username' doesn't have any roaming Notepad++ data."
+                Write-Host "[-] '$username' doesn't have any roaming Notepad++ data." -ForegroundColor DarkYellow
             }
         } else {
-            Write-Host "[-] '$username' doesn't have any roaming Notepad++ data."
+            Write-Host "[-] '$username' doesn't have any roaming Notepad++ data." -ForegroundColor DarkYellow
         }
     }
 
-    if (-not $found) { Write-Host "[!] No backup directories found under $rootDirectory." }
-} catch { Write-Host "An error occurred: $_" }
+    if (-not $found) { Write-Host "[!] No backup directories found under $rootDirectory." -ForegroundColor DarkRed }
+} catch { Write-Host "An error occurred: $_" -ForegroundColor DarkRed }
