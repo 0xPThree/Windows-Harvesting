@@ -1,4 +1,5 @@
 A set of scripts to help gathering credentials from Windows devices, especially usefull if there are hundreds of users on the machine.
+
 The scripts should be run as a **high privileged user** to gather as much information as possible.
 
 ---
