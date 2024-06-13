@@ -6,8 +6,10 @@
 .EXAMPLE
     PS E:\devop-scripts> powershell.exe -ExecutionPolicy Bypass .\notepad_dump.ps1
     [-] 'Public' doesn't have any roaming Notepad++ data.
+    [+] Dumping Notepad++ data from 'user' to: C:\Users\void\AppData\Local\Temp\user\notepad++
+    [+] Dumping Notepad++ data from 'user2' to: C:\Users\void\AppData\Local\Temp\user2\notepad++
+    [-] 'user3' doesn't have any roaming Notepad++ data.
     [+] Dumping Notepad++ data from 'void' to: C:\Users\void\AppData\Local\Temp\void\notepad++
-    [+] Dumping Notepad++ data from 'testuser' to: C:\Users\void\AppData\Local\Temp\testuser\notepad++
 
 .NOTES
     Author: 0xPThree @ Exploit.se
